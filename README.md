@@ -24,12 +24,12 @@
         }
    ```
   6. The response of above request would return an access_token. Copy the token and make another sample request like below.
-    ```
+```
       URL: http://127.0.0.1:5000/
       VERB: GET
       HEADER:
         "Authorization":"JWT <ACCESSTOKEN>"
-   ```
+```
    7. The response for the above request will be: "Hello World"
    
    
