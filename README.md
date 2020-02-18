@@ -1,5 +1,6 @@
 # flask-api-starter
 
+### Setup
   Steps for setup:
   1. Setup the virtual environment in pycharm editor and create a new project.
   2. Clone the content of this repository to the project folder.
@@ -33,6 +34,6 @@
    7. The response for the above request will be: "Hello World"
    
    
-   Additional Points:
+  ### Additional Points
    - Currently the username & password are hardcoded in the security.py. This should be stored in the database user table.
    - The secret_key for encryption in Auth is hard coded in the variable. Ideally this should managed by a trusted platform service.
