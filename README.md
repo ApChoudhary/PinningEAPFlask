@@ -8,11 +8,12 @@
   ```
       pip install -r requirement.txt
   ```
-  4. Run the api.py
+  4. Edit the config.ini file, and put your SQL Server username and password in it.
+  5. Run the api.py
   ```
       python api.py
   ```
-  5. Once successfully run, open any rest client like postman and hit the auth URL. The request should look like below.
+  6. Once successfully run, open any rest client like postman and hit the auth URL. The request should look like below.
   ```
       URL: http://127.0.0.1:5000/auth
       VERB: POST
@@ -24,14 +25,14 @@
 	        "password":"asdf"	
         }
    ```
-  6. The response of above request would return an access_token. Copy the token and make another sample request like below.
+  7. The response of above request would return an access_token. Copy the token and make another sample request like below.
 ```
       URL: http://127.0.0.1:5000/
       VERB: GET
       HEADER:
         "Authorization":"JWT <ACCESSTOKEN>"
 ```
-   7. The response for the above request will be: "Hello World"
+  8. The response for the above request will be: "Hello World"
    
    
   ### Additional Points
