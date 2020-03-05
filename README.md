@@ -8,7 +8,13 @@
   ```
       pip install -r requirement.txt
   ```
-  4. Edit the config.ini file, and put your SQL Server username and password in it.
+  4. Create a config.ini file with the following contents:
+  '''
+      	[credentials]
+	username = <SQL Server Username>
+	password = <SQL Server Password>
+  '''
+     These Username and Password should be same as your windows username and password.
   5. Run the api.py
   ```
       python api.py
