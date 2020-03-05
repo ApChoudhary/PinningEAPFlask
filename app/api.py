@@ -17,10 +17,11 @@ jwt = JWT(app, authenticate, identity)
 def hello_world():
     return jsonify('Hello World!')
 
-@app.route('/dbdata')
+@app.route('/dbdata', methods=['POST'])
 def dbData():
     print('test')
-    return jsonify(getData())
+    data = request.get_json()
+    return jsonify(getData(data))
 
 @app.route('/insertIntoDB', methods=['POST'])
 def insertIntoDb():
