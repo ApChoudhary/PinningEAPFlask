@@ -13,21 +13,22 @@ def serverConnection():
     conn = pyodbc.connect('Driver={ODBC Driver 17 for SQL SERVER};'
                           'Server=USHYDAPOOCH1\SQLEXPRESS;'
                           'Database=CDP_MONITOR;'
-                          'UID='+username+';'
-                          'PWD='+password+';'
                           'Trusted_Connection=yes;'
                           )
 
     return conn
 
-def getData():
+def getData(data):
     conn = serverConnection()
     cursor = conn.cursor()
-    rows = cursor.execute("[AGG_SRC_HIT]")
+    service = data["service"]
+    rows = cursor.execute("[SRC_HIT] @SRV_NAME = '"+service+"'")
     data = []
     for row in rows.fetchall():
         data.append([x for x in row])
+    print(data)
     return data
+
 
 def insertData(data):
     conn = serverConnection()
