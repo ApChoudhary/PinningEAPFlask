@@ -11,7 +11,7 @@ def serverConnection():
     username = parser.get('credentials', 'username')
     password = parser.get('credentials', 'password')
     conn = pyodbc.connect('Driver={ODBC Driver 17 for SQL SERVER};'
-                          'Server=USHYDAPOOCH1\SQLEXPRESS;'
+                          'Server=USBLRRUCHIAGAR7\SQLEXPRESS;'
                           'Database=CDP_MONITOR;'
                           'Trusted_Connection=yes;'
                           )
@@ -37,3 +37,12 @@ def insertData(data):
     print('Insert into [Pinning Table] (ID, [Service Name], Hit, [Source], [Seq No]) Values ('+data["ID"]+', \''+data["Service_Name"]+'\', '+data["Hit"]+', \''+data["Source"]+'\', '+data["Seq_No"]+')')
     cursor.execute('Insert into [Pinning Table] (ID, [Service Name], Hit, [Source], [Seq No]) Values ('+data["ID"]+', \''+data["Service_Name"]+'\', '+data["Hit"]+', \''+data["Source"]+'\', '+data["Seq_No"]+')')
     conn.commit()
+
+def insertRequestData(data):
+    conn = serverConnection()
+    cursor = conn.cursor()
+    print("Inserting Data: "+ json.dumps(data))
+    print('Insert into [REQUEST_DATA] ([SERVICE],[REQUEST_TYPE],[REASON],[DESCRIPTION],[REQUESTOR_NAME],[CLIENT_NAME],[REQUESTOR_EMAIL],[SEND_COPY_TO]) Values (\'' + data["SERVICE"] + '\',\'' + data["REQUEST_TYPE"] + '\',\'' + data["REASON"] + '\', \'' + data["DESCRIPTION"] + '\', \'' + data["REQUESTOR_NAME"] + '\',\'' + data["CLIENT_NAME"] + '\',\'' + data["REQUESTOR_EMAIL"] + '\',\'' + data["SEND_COPY_TO"] + '\')')
+    cursor.execute('Insert into [REQUEST_DATA] ([SERVICE],[REQUEST_TYPE],[REASON],[DESCRIPTION],[REQUESTOR_NAME],[CLIENT_NAME],[REQUESTOR_EMAIL],[SEND_COPY_TO]) Values (\'' + data["SERVICE"] + '\',\'' + data["REQUEST_TYPE"] + '\',\'' + data["REASON"] + '\', \'' + data["DESCRIPTION"] + '\', \'' + data["REQUESTOR_NAME"] + '\',\'' + data["CLIENT_NAME"] + '\',\'' + data["REQUESTOR_EMAIL"] + '\',\'' + data["SEND_COPY_TO"] + '\')')
+    conn.commit()
+    
