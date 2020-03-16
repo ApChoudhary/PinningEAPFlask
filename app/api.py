@@ -35,11 +35,12 @@ def insertIntoDb():
 
 @app.route('/insertRequestIntoDB', methods=['POST'])
 @cross_origin()
+@jwt_required()
 def insertRequestIntoDb():
     print("hello db")
     data = request.get_json()
     insertRequestData(data)
-    return "insert Request Data"
+    return jsonify('insert Request Data')
 
 if __name__ == '__main__':
     app.debug = True
